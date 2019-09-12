@@ -1,0 +1,11 @@
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.csprojAssemblyReference.cache
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.csproj.CoreCompileInputs.cache
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.AssemblyInfoInputs.cache
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.AssemblyInfo.cs
+C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.deps.json
+C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.runtimeconfig.json
+C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.runtimeconfig.dev.json
+C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.dll
+C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.pdb
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.dll
+C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.pdb

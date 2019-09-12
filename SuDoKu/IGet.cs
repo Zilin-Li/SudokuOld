@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SudokuV2
+namespace SuDoKu
 {
     interface IGet
     {

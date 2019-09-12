@@ -6,19 +6,15 @@ namespace SuDoKu
 {
     class SudokuGame : ISet, IGame, IGet, ISerialize
     {
-        public int arrayIndex;
-        public int[] sudokuArray; // = new int[100];
-        public int maxValue; // = 6;
-        public int squareHeight; // = 2;
-        public int squareWidth; // = 3;
+        private int arrayIndex;
+        private int[] sudokuArray,mySudokuArray; // = new int[100];
+        private int maxValue; // = 6;
+        private int squareHeight; // = 2;
+        private int squareWidth; // = 3
+        private string CSVFile;
+        private string PrettyString;
+        protected int cellValue;
 
-        public SudokuGame(int newMaximum, int newSquareHeight, int newSquareWidth, int[] newSudokuArray)
-        {
-            maxValue = newMaximum;
-            squareHeight = newSquareHeight;
-            squareWidth = newSquareWidth;
-            sudokuArray = newSudokuArray;
-        }
 
         //Realize interface ISet.
         public void SetByColumn(int value, int columnIndex, int rowIndex)
@@ -36,7 +32,7 @@ namespace SuDoKu
             int colInd;//local columnIndex
             int rowInd;//local rowIndex
             colInd = (squareIndex % (maxValue / squareWidth)) * squareWidth + (positionIndex % squareWidth);
-            rowInd = (squareIndex / (maxValue / squareWidth)) * squareHeight + (positionIndex % squareWidth);
+            rowInd = (squareIndex / (maxValue / squareWidth)) * squareHeight + (positionIndex / squareWidth);
             arrayIndex = colInd + rowInd * maxValue;
             sudokuArray[arrayIndex] = value;
         }
@@ -69,25 +65,37 @@ namespace SuDoKu
         }
         public int GetMaxValue()
         {
-
-            Console.WriteLine("Please enter the max value: ");
-            return Int16.Parse(Console.ReadLine());
+            return maxValue;
         }
+
+        //We get a string "CSVFile", Which including ',' and '\n'
+        //This function to change the string to an int[], Which we can use to set the cellvalue.
         public int[] ToArray()
         {
-            sudokuValue = new int[maxValue * maxValue];
-            for (int i = 0; i < maxValue * maxValue; i++)
+            //trans the CSVFile into a string which only including cellvalue.
+            string cellValueStr = "";
+            for (int i = 0; i < CSVFile.Length; i++)
             {
-                sudokuValue[i] = 0;
+                if (Char.IsNumber(CSVFile, i) == true)
+                {
+                    cellValueStr += CSVFile.Substring(i, 1);
+                }
             }
+            // put the cellvalue into a int array.
 
-            return sudokuValue;
+            sudokuArray = new int[cellValueStr.Length];
+            for (int i = 0; i < cellValueStr.Length; i++)
+                sudokuArray[i] = Int32.Parse(cellValueStr[i].ToString());
 
+            return sudokuArray;
         }
+
+
         public void Set(int[] cellValues)
         {
-
+            sudokuArray = cellValues;
         }
+
         public void SetSquareWidth(int Width)
         {
             squareWidth = Width;
@@ -98,76 +106,107 @@ namespace SuDoKu
         }
         public void Restart()
         {
-            string result = "";
 
+
+
+        }
+
+        //Realize interface ISerialize
+        public void FromCSV(string csv)
+        {
+            CSVFile = csv;
+        }
+
+        public string ToCSV() //the function to save the game;
+        {
+            string saveFile = "";
+            for (int i = 0; i < sudokuArray.Length; i++)
+            {
+                saveFile += sudokuArray[i] + ",";
+            }
+            saveFile += '\n';
+
+            return saveFile;
+
+        }
+        public void SetCell(int value, int gridIndex)
+        {
+            this.ToArray()[gridIndex] = value;
+        }
+        public int GetCell(int gridIndex)
+        {
+            cellValue = this.ToArray()[gridIndex];
+            return cellValue;
+        }
+
+        public string ToPrettyString()
+        {
+            PrettyString = "";
             for (int i = 0; i < maxValue * maxValue; i++)
             {
+                //cellArray[i] = 7;
                 if ((i + 1) % maxValue == 0)
                 {
-                    result += " " + sudokuValue[i].ToString();
-                    result += "\n";
+                    PrettyString += " " + sudokuArray[i].ToString();
+                    PrettyString += "\n";
                 }
                 else
                 {
                     if ((i + 1) % squareWidth == 0)
                     {
-                        result += " " + sudokuValue[i].ToString() + " |";
+                        PrettyString += " " + sudokuArray[i].ToString() + " |";
                     }
                     else
                     {
-                        result += " " + sudokuValue[i].ToString();
+                        PrettyString += " " + sudokuArray[i].ToString();
                     }
                 }
 
                 if ((i + 1) % (squareHeight * maxValue) == 0 && (i + 1) % (maxValue * maxValue) != 0)
                 {
-                    for (int j = 0; j < maxValue / squareHeight; j++)
+                    for (int j = 0; j < maxValue / squareWidth; j++)
                     {
-                        for (int k = 0; k < squareHeight * 2 + 1; k++)
+                        for (int k = 0; k < squareWidth * 2 + 1; k++)
                         {
-                            result += "-";
+                            PrettyString += "-";
                         }
-                        if (j != maxValue / squareHeight - 1)
+                        if (j != maxValue / squareWidth - 1)
                         {
-                            result += "+";
+                            PrettyString += "+";
                         }
                     }
-                    result += "\n";
+                    PrettyString += "\n";
                 }
-            }
-            Console.WriteLine(result);
 
+            }
+            return PrettyString;
         }
 
-        public bool rowVaild(int RowNumber)
-        {
-            int[] cellValue = { 1, 0, 2, 0, 2, 4, 3, 1, 4, 2, 1, 3, 3, 1, 4, 2 };
-            int maxValue = 4;
-            int Width = 2;
-            int Height = 2;
-            int[] rowValue = new int[maxValue];
-
-
-
-            for (int i = 0; i < maxValue; i++)
+            //Other features
+            public bool rowVaild(int RowNumber)
             {
+                int[] cellValue = { 1, 0, 2, 0, 2, 4, 3, 1, 4, 2, 1, 3, 3, 1, 4, 2 };
+                int maxValue = 4;
+                int[] rowValue = new int[maxValue];
 
-                rowValue[i] = cellValue[RowNumber * maxValue + i];
-            }
-
-            for (int a = 1; a <= 4; a++)
-            {
-                int id = Array.IndexOf(rowValue, a);
-                if (id == -1)
+                for (int i = 0; i < maxValue; i++)
                 {
-                    return false;
+
+                    rowValue[i] = cellValue[RowNumber * maxValue + i];
                 }
+
+                for (int a = 1; a <= 4; a++)
+                {
+                    int id = Array.IndexOf(rowValue, a);
+                    if (id == -1)
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
-            return true;
         }
-
-
-
     }
 
-}
+
+
