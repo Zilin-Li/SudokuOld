@@ -37,7 +37,7 @@ namespace SuDoKu
 
             // 2 by 2 file
             CSVFile = "4,2,2" + '\n';
-            CSVFile += ("1,0,3,4,2,3,0,1,0,4,1,2,0,1,2,0" + '\n');
+            CSVFile += ("1,1,3,4,3,3,0,1,3,2,1,2,3,1,2,0" + '\n');
 
           
             game.FromCSV(CSVFile);
@@ -94,13 +94,30 @@ namespace SuDoKu
             }
             // test the function of ToCSV
            view.DisplayBoard(game.ToCSV());*/
-            
+
 
             //test the function of SetCell/GetCell
             /*game.SetCell(3, 4);
             view.DisplayBoard(game.ToPrettyString());
             view.DisplayBoard(game.GetCell(9).ToString());*/
 
+            //test the function of RowVaild
+            view.DisplayBoard(game.RowVaild(0).ToString ());
+            view.DisplayBoard(game.RowVaild(1).ToString());
+            view.DisplayBoard(game.RowVaild(2).ToString());
+            view.DisplayBoard(game.RowVaild(3).ToString());
+
+            //test the function of ColumnVaild
+            view.DisplayBoard(game.ColumnVaild(0).ToString());
+            view.DisplayBoard(game.ColumnVaild(1).ToString());
+            view.DisplayBoard(game.ColumnVaild(2).ToString());
+            view.DisplayBoard(game.ColumnVaild(3).ToString());
+
+            //test the function of SquareVaild
+            view.DisplayBoard(game.SquareVaild(0).ToString());
+            view.DisplayBoard(game.SquareVaild(1).ToString());
+            view.DisplayBoard(game.SquareVaild(2).ToString());
+            view.DisplayBoard(game.SquareVaild(3).ToString());
             view.Finish();
         }
     }

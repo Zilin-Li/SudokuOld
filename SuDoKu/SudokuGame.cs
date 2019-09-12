@@ -183,30 +183,95 @@ namespace SuDoKu
         }
 
             //Other features
-            public bool rowVaild(int RowNumber)
+
+        //feature 1: check whether a row is vaild.
+        public bool RowVaild(int RowNumber)
+        {
+            bool isVaildRow = true;
+
+            int[] rowValue = new int[maxValue];
+        //put every value of the row into an int array.
+        //for next step to check
+            for (int i = 0; i < maxValue; i++)
             {
-                int[] cellValue = { 1, 0, 2, 0, 2, 4, 3, 1, 4, 2, 1, 3, 3, 1, 4, 2 };
-                int maxValue = 4;
-                int[] rowValue = new int[maxValue];
-
-                for (int i = 0; i < maxValue; i++)
-                {
-
-                    rowValue[i] = cellValue[RowNumber * maxValue + i];
-                }
-
-                for (int a = 1; a <= 4; a++)
-                {
-                    int id = Array.IndexOf(rowValue, a);
-                    if (id == -1)
-                    {
-                        return false;
-                    }
-                }
-                return true;
+                rowValue[i] = GetByRow(RowNumber, i);
             }
+
+        //sort the value, the vaild value should be 1~maxValue.
+        //if not return false.
+
+            Array.Sort(rowValue);
+            for (int a = 0; a < maxValue; a++)
+            {
+                if(rowValue[a] != a+1)
+                {
+                isVaildRow = false;
+                }
+            }
+                    
+            return isVaildRow;
         }
+
+        //feature 2: check whether a column is vaild.
+        public bool ColumnVaild(int ColumnNumber)
+        {
+            bool isVaildColumn = true;
+
+            int[] ColumnValue = new int[maxValue];
+            //put every value of the Column into an int array.
+            //for next step to check
+            for (int i = 0; i < maxValue; i++)
+            {
+                ColumnValue[i] = GetByColumn(ColumnNumber, i);
+            }
+
+            //sort the value, the vaild value should be 1~maxValue.
+            //if not return false.
+
+            Array.Sort(ColumnValue);
+            for (int a = 0; a < maxValue; a++)
+            {
+                if (ColumnValue[a] != a + 1)
+                {
+                    isVaildColumn = false;
+                }
+            }
+            return isVaildColumn;
+        }
+
+        //feature 3: check whether a square is vaild.
+        public bool SquareVaild(int squareNumber)
+        {
+            bool isVaildSquare = true;
+
+            int[] SquareValue = new int[maxValue];
+            //put every value of the Square into an int array.
+            //for next step to check
+            for (int i = 0; i < maxValue; i++)
+            {
+                SquareValue[i] = GetBySquare(squareNumber, i);
+            }
+
+            //sort the value, the vaild value should be 1~maxValue.
+            //if not return false.
+
+            Array.Sort(SquareValue);
+            for (int a = 0; a < maxValue; a++)
+            {
+                if (SquareValue[a] != a + 1)
+                {
+                    isVaildSquare = false;
+                }
+            }
+            return isVaildSquare;
+        }
+
+
+
+
+
     }
+}
 
 
 
