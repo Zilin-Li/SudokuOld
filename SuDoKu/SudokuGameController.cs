@@ -41,6 +41,7 @@ namespace SuDoKu
 
           
             game.FromCSV(CSVFile);
+            game.Set(game.ToArray());
             view.Clear();
 
             //Output the sudoku game(4*4)
@@ -118,6 +119,36 @@ namespace SuDoKu
             view.DisplayBoard(game.SquareVaild(1).ToString());
             view.DisplayBoard(game.SquareVaild(2).ToString());
             view.DisplayBoard(game.SquareVaild(3).ToString());
+
+            //test the function of VaildValueByRow
+
+            List<int> RowPossible = game.VaildValueByRow(9);
+            foreach (int aNumber in RowPossible)
+            {
+                Console.Write(aNumber + " ");
+            }
+            Console.Write("\n");
+
+            //test the function of VaildValueByColumn
+
+            List<int> ConlumnPossible = game.VaildValueByColumn(9);
+            foreach (int aNumber in ConlumnPossible)
+            {
+                Console.Write(aNumber + " ");
+            }
+            Console.Write("\n");
+
+            //test the function of VaildValueBySquare
+
+            List<int> SquarePossible = game.VaildValueBySquare(9);
+            foreach (int aNumber in SquarePossible)
+            {
+                Console.Write(aNumber + " ");
+            }
+            Console.Write("\n");
+
+
+
             view.Finish();
         }
     }

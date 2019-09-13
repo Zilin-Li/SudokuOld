@@ -7,7 +7,7 @@ namespace SuDoKu
     class SudokuGame : ISet, IGame, IGet, ISerialize
     {
         private int arrayIndex;
-        private int[] sudokuArray,mySudokuArray; // = new int[100];
+        private int[] sudokuArray; // = new int[100];
         private int maxValue; // = 6;
         private int squareHeight; // = 2;
         private int squareWidth; // = 3
@@ -29,8 +29,10 @@ namespace SuDoKu
         }
         public void SetBySquare(int value, int squareIndex, int positionIndex)
         {
-            int colInd;//local columnIndex
-            int rowInd;//local rowIndex
+            int colInd;
+            int rowInd;
+            // Use squareIndex and positionIndex to find out the colindex and rowindex
+            // use colindex and rowindex to set the value
             colInd = (squareIndex % (maxValue / squareWidth)) * squareWidth + (positionIndex % squareWidth);
             rowInd = (squareIndex / (maxValue / squareWidth)) * squareHeight + (positionIndex / squareWidth);
             arrayIndex = colInd + rowInd * maxValue;
@@ -69,7 +71,7 @@ namespace SuDoKu
         }
 
         //We get a string "CSVFile", Which including ',' and '\n'
-        //This function to change the string to an int[], Which we can use to set the cellvalue.
+        //This function to change the string to an int[]
         public int[] ToArray()
         {
             //trans the CSVFile into a string which only including cellvalue.
@@ -83,11 +85,11 @@ namespace SuDoKu
             }
             // put the cellvalue into a int array.
 
-            sudokuArray = new int[cellValueStr.Length];
+            int[] mySudokuArray = new int[cellValueStr.Length];
             for (int i = 0; i < cellValueStr.Length; i++)
-                sudokuArray[i] = Int32.Parse(cellValueStr[i].ToString());
+                mySudokuArray[i] = Int32.Parse(cellValueStr[i].ToString());
 
-            return sudokuArray;
+            return mySudokuArray;
         }
 
 
@@ -117,7 +119,9 @@ namespace SuDoKu
             CSVFile = csv;
         }
 
-        public string ToCSV() //the function to save the game;
+        //the function to save the game;
+        //change the current sudoku array to CSVfile(a string)
+        public string ToCSV() 
         {
             string saveFile = "";
             for (int i = 0; i < sudokuArray.Length; i++)
@@ -127,15 +131,16 @@ namespace SuDoKu
             saveFile += '\n';
 
             return saveFile;
-
         }
+
+
         public void SetCell(int value, int gridIndex)
         {
-            this.ToArray()[gridIndex] = value;
+            sudokuArray[gridIndex] = value;
         }
         public int GetCell(int gridIndex)
         {
-            cellValue = this.ToArray()[gridIndex];
+            cellValue = sudokuArray[gridIndex];
             return cellValue;
         }
 
@@ -218,7 +223,7 @@ namespace SuDoKu
             bool isVaildColumn = true;
 
             int[] ColumnValue = new int[maxValue];
-            //put every value of the Column into an int array.
+            //put each value of the Column into an int array.
             //for next step to check
             for (int i = 0; i < maxValue; i++)
             {
@@ -266,7 +271,104 @@ namespace SuDoKu
             return isVaildSquare;
         }
 
+        //feature 4: list vaild value by Row.
 
+        public List<int> VaildValueByRow(int gridIndex)
+        {
+
+            //step1: put all value(1-maxvalue) into list.
+            List<int> rowVaildValue = new List<int>();
+            for(int i = 1; i <= maxValue; i++)
+            {
+                rowVaildValue.Add(i);
+            }
+
+            // get the rowIndex
+            int rowIndex = gridIndex / maxValue;
+
+            //step2: use get GetByRow() to get each value of the row
+            for (int a = 0; a < maxValue; a++)
+            {
+                int eachRowValue = GetByRow(rowIndex, a);
+
+                //step3: check whether the rowvalue in the list
+                //if already in the list, remove it.
+                //the remain number is vaild value.
+                if (rowVaildValue.Contains(eachRowValue))
+                {
+                    rowVaildValue.Remove(eachRowValue);
+                }
+
+            }
+            return rowVaildValue;
+        }
+
+        //feature 5: list vaild value by Column.
+
+        public List<int> VaildValueByColumn(int gridIndex)
+        {
+
+            //step1: put all value(1-maxvalue) into list.
+            List<int> ColumnVaildValue = new List<int>();
+            for (int i = 1; i <= maxValue; i++)
+            {
+                ColumnVaildValue.Add(i);
+            }
+
+            // get the columnIndex
+            int columnIndex = gridIndex % maxValue;
+
+            //step2: use get GetByColumn() to get each value of the Column
+            for (int a = 0; a < maxValue; a++)
+            {
+                int eachColumnValue = GetByColumn(columnIndex, a);
+
+                //step3: check whether the rowvalue in the list
+                //if already in the list, remove it.
+                //the remain number is vaild value.
+                if (ColumnVaildValue.Contains(eachColumnValue))
+                {
+                    ColumnVaildValue.Remove(eachColumnValue);
+                }
+
+            }
+            return ColumnVaildValue;
+        }
+
+        //feature 6: list vaild value by Square.
+
+        public List<int> VaildValueBySquare(int gridIndex)
+        {
+
+            //step1: put all value(1-maxvalue) into list.
+            List<int> squareVaildValue = new List<int>();
+            for (int i = 1; i <= maxValue; i++)
+            {
+                squareVaildValue.Add(i);
+            }
+
+            // get the squareIndex
+            int columnIndex = gridIndex % maxValue;
+            int rowIndex = gridIndex / maxValue;
+            int squareIndex = (rowIndex / squareHeight) * squareHeight + columnIndex % squareWidth;
+
+
+            //step2: use get GetBySquare() to get each value of the square
+            for (int a = 0; a < maxValue; a++)
+            {
+                int eachSquareValue = GetBySquare(squareIndex, a);
+
+                //step3: check whether the squarevalue in the list
+                //if already in the list, remove it.
+                //the remain number is vaild value.
+                if (squareVaildValue.Contains(eachSquareValue))
+                {
+                    squareVaildValue.Remove(eachSquareValue);
+                }
+
+            }
+            return squareVaildValue;
+        }
 
 
 
