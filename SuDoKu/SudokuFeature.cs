@@ -6,6 +6,10 @@ namespace SuDoKu
 {
     public partial class SudokuGame
     {
+        public int arrayIndex, cellValue, maxValue, squareHeight, squareWidth;
+        public int[] sudokuArray, CSVArray;
+        public string CSVFile, PrettyString;
+
         //Other features
 
         //feature 1: check whether a row is vaild.
