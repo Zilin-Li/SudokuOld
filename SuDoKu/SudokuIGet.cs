@@ -19,8 +19,8 @@ namespace SuDoKu
         }
         public int GetBySquare(int squareIndex, int positionIndex)
         {
-            int colInd;//local columnIndex
-            int rowInd;//local rowIndex
+            int colInd;
+            int rowInd;
             colInd = (squareIndex % (maxValue / squareWidth)) * squareWidth + (positionIndex % squareWidth);
             rowInd = (squareIndex / (maxValue / squareWidth)) * squareHeight + (positionIndex / squareWidth);
             arrayIndex = colInd + rowInd * maxValue;

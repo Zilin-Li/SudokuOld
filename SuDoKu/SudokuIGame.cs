@@ -50,31 +50,33 @@ namespace SuDoKu
             }
 
         }
-        public int GetSquareWidth()
+
+        public void SetSquareHeight(int Height)
         {
-            int Width = CSVArray[1];
-            return Width;
+            squareHeight = Height;
         }
+       
         public void SetSquareWidth(int Width)
         {
             squareWidth = Width;
         }
 
-        public int GetSquareHeight()
-        {
-            int Height = CSVArray[2];
-            return Height;
-        }
-        public void SetSquareHeight(int Height)
-        {
-            squareHeight = Height;
-        }
-
         public void Restart()
         {
             this.Set(this.ToArray());
-
         }
+
+        public int GetSquareHeight()
+        {
+            int Height = CSVArray[1];
+            return Height;
+        }
+        public int GetSquareWidth()
+        {
+            int Width = CSVArray[2];
+            return Width;
+        }
+
 
     }
 }

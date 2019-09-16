@@ -9,3 +9,14 @@ C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.dll
 C:\ProjectsLynn\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.pdb
 C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.dll
 C:\ProjectsLynn\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.pdb
+C:\Users\box\source\repos\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.deps.json
+C:\Users\box\source\repos\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.runtimeconfig.json
+C:\Users\box\source\repos\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.runtimeconfig.dev.json
+C:\Users\box\source\repos\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.dll
+C:\Users\box\source\repos\SuDoKu\SuDoKu\bin\Debug\netcoreapp2.1\SuDoKu.pdb
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.csprojAssemblyReference.cache
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.csproj.CoreCompileInputs.cache
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.AssemblyInfoInputs.cache
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.AssemblyInfo.cs
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.dll
+C:\Users\box\source\repos\SuDoKu\SuDoKu\obj\Debug\netcoreapp2.1\SuDoKu.pdb

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace SuDoKu
 {
@@ -9,6 +10,7 @@ namespace SuDoKu
         //Realize interface ISerialize
         public void FromCSV(string csv)
         {
+
             CSVFile = csv;
         }
 
@@ -23,12 +25,18 @@ namespace SuDoKu
             }
             saveFile += '\n';
 
+            var csv = new StringBuilder();
+            csv.AppendLine(saveFile);
+            //get current working directory
+            string path = Directory.GetCurrentDirectory();
+            string filePath = path + "/mysudoku.csv";
+            File.WriteAllText(filePath, csv.ToString());
             return saveFile;
         }
 
         public void SetCell(int value, int gridIndex)
         {
-            if(value>=0 && value<= maxValue && gridIndex >=0 && gridIndex < maxValue)
+            if(value>=0 && value<= maxValue && gridIndex >=0 && gridIndex < maxValue * maxValue)
             {
                 sudokuArray[gridIndex] = value;
             }
@@ -40,7 +48,7 @@ namespace SuDoKu
         }
         public int GetCell(int gridIndex)
         {
-            if(gridIndex>=0 && gridIndex< maxValue)
+            if(gridIndex>=0 && gridIndex< maxValue * maxValue)
             {
                 cellValue = sudokuArray[gridIndex];
             }
@@ -56,9 +64,11 @@ namespace SuDoKu
         public string ToPrettyString()
         {
             PrettyString = "";
+
+            // This part was wrote by Harry
             for (int i = 0; i < maxValue * maxValue; i++)
             {
-                //cellArray[i] = 7;
+            
                 if ((i + 1) % maxValue == 0)
                 {
                     PrettyString += " " + sudokuArray[i].ToString();
@@ -92,7 +102,8 @@ namespace SuDoKu
                     PrettyString += "\n";
                 }
 
-            }
+            }// End here.
+
             PrettyString = PrettyString.Replace('0', '*');
             return PrettyString;
         }

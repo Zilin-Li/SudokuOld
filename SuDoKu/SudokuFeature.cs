@@ -167,10 +167,23 @@ namespace SuDoKu
                 squareVaildValue.Add(i);
             }
 
-           // get the squareIndex
+           // get the squareIndex   *****************************incorrect
             int columnIndex = gridIndex % maxValue;
             int rowIndex = gridIndex / maxValue;
             int squareIndex = (rowIndex / squareHeight) * squareHeight + columnIndex % squareWidth;
+
+
+            //use below method to get squreIndex *********************************************************
+            for(int i=0; i< maxValue; i++)
+            {
+                for(int j= 0; j< maxValue; j++)
+                {
+                    if((i  * maxValue) + j == gridIndex)
+                        squareIndex = i / squareHeight * squareHeight + j / squareWidth;
+                }
+            }
+
+
 
 
             //step2: use get GetBySquare() to get each value of the square

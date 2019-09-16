@@ -6,14 +6,14 @@ namespace SuDoKu
 {
      public partial class SudokuGame : ISet
     {
-        private int arrayIndex;
-        private int[] sudokuArray, CSVArray; 
-        private int maxValue; 
-        private int squareHeight; 
-        private int squareWidth; 
-        private string CSVFile;
-        private string PrettyString;
-        protected int cellValue;
+        public int arrayIndex;
+        public int[] sudokuArray, CSVArray;
+        public int maxValue;
+        public int squareHeight;
+        public int squareWidth;
+        public string CSVFile;
+        public string PrettyString;
+        public int cellValue;
 
 
         //Realize interface ISet.
