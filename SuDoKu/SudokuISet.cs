@@ -6,6 +6,7 @@ namespace SuDoKu
 {
      public partial class SudokuGame : ISet
     {
+<<<<<<< HEAD
         public int arrayIndex;
         public int[] sudokuArray, CSVArray;
         public int maxValue;
@@ -16,6 +17,9 @@ namespace SuDoKu
         public int cellValue;
 
 
+=======
+       
+>>>>>>> d2b64c5505d68424991a4db21d618d568ed04b33
         //Realize interface ISet.
         public void SetByColumn(int value, int columnIndex, int rowIndex)
         {

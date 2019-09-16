@@ -15,6 +15,7 @@ C:\ProjectsLynn\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.AssemblyI
 C:\ProjectsLynn\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.csproj.CopyComplete
 C:\ProjectsLynn\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.dll
 C:\ProjectsLynn\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.pdb
+<<<<<<< HEAD
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -32,3 +33,5 @@ C:\Users\box\source\repos\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.csproj.CopyComplete
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.dll
 C:\Users\box\source\repos\SuDoKu\SuDoKuTests\obj\Debug\netcoreapp2.1\SuDoKuTests.pdb
+=======
+>>>>>>> d2b64c5505d68424991a4db21d618d568ed04b33

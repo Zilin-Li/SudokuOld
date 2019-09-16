@@ -10,7 +10,7 @@ namespace SuDoKu
         protected SudokuGame game;
         protected int maxValue, SquareHeight, SquareWidth;
         protected string vaildValue;
-        //protected int[] cellValueArray;
+        
 
         public SudokuGameController(IView theView, SudokuGame theGame)
         {
@@ -45,6 +45,7 @@ namespace SuDoKu
             // 3 by 3 file
             //CSVFile = "9,3,3" + '\n';
             //CSVFile += ("1,2,3,4,5,6,7,8,9,2,3,4,5,6,7,8,9,1,3,4,5,6,7,8,9,1,2,4,5,6,7,8,9,1,2,3,5,6,7,8,9,1,2,3,4,6,7,8,9,1,2,3,4,5,7,8,9,1,2,3,4,5,6,8,9,1,2,3,4,5,6,7,9,1,2,3,4,5,6,7,8" + '\n');
+            
 
             game.FromCSV(CSVFile); // test: ISerialize - FromCSV
             game.ToArray();
